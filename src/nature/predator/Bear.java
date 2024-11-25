@@ -1,6 +1,5 @@
 package nature.predator;
 
-import nature.animals.herbivore.*;
 import nature.herbivore.*;
 
 public class Bear extends Predator {
