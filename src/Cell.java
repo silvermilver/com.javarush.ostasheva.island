@@ -1,8 +1,8 @@
-import nature.animals.Plant;
-import nature.animals.herbivore.Duck;
-import nature.animals.herbivore.Herbivore;
-import nature.animals.predator.Predator;
-import nature.animals.predator.Wolf;
+import nature.Plant;
+import nature.herbivore.Duck;
+import nature.herbivore.Herbivore;
+import nature.predator.Predator;
+import nature.predator.Wolf;
 
 import java.util.ArrayList;
 import java.util.List;

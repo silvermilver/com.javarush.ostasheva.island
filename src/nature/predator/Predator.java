@@ -1,6 +1,6 @@
-package nature.animals.predator;
+package nature.predator;
 
-import nature.animals.Animal;
+import nature.Animal;
 
 import java.util.HashMap;
 import java.util.Map;

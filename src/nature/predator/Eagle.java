@@ -1,6 +1,9 @@
-package nature.animals.predator;
+package nature.predator;
 
 import nature.animals.herbivore.*;
+import nature.herbivore.Duck;
+import nature.herbivore.Mouse;
+import nature.herbivore.Rabbit;
 
 public class Eagle extends Predator {
 

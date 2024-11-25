@@ -1,8 +1,8 @@
-package nature.animals.herbivore;
+package nature.herbivore;
 
-import nature.animals.Animal;
-import nature.animals.Nature;
-import nature.animals.Plant;
+import nature.Animal;
+import nature.Nature;
+import nature.Plant;
 
 import java.util.HashMap;
 import java.util.Map;

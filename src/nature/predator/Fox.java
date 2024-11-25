@@ -1,9 +1,9 @@
-package nature.animals.predator;
+package nature.predator;
 
-import nature.animals.herbivore.Caterpillar;
-import nature.animals.herbivore.Duck;
-import nature.animals.herbivore.Mouse;
-import nature.animals.herbivore.Rabbit;
+import nature.herbivore.Caterpillar;
+import nature.herbivore.Duck;
+import nature.herbivore.Mouse;
+import nature.herbivore.Rabbit;
 
 public class Fox extends Predator {
 

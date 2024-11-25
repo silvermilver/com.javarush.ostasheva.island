@@ -1,4 +1,4 @@
-package nature.animals;
+package nature;
 
 public class Plant extends Nature {
 

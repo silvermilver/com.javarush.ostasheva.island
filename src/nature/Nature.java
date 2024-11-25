@@ -1,4 +1,4 @@
-package nature.animals;
+package nature;
 
 public abstract class Nature {
 

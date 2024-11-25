@@ -1,4 +1,4 @@
-package nature.animals.herbivore;
+package nature.herbivore;
 
 public class Rabbit extends Herbivore {
 
