@@ -1,7 +1,7 @@
-package nature.animals.herbivores;
+package nature.animals.herbivore;
 
 
-public class Mouse extends Herbivores {
+public class Mouse extends Herbivore {
 
     public Mouse(){
         chanceToEat.put(new Caterpillar(), 90);

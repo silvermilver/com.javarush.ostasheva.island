@@ -1,8 +1,8 @@
 import nature.animals.Plant;
-import nature.animals.herbivores.Duck;
-import nature.animals.herbivores.Herbivores;
-import nature.animals.predators.Predators;
-import nature.animals.predators.Wolf;
+import nature.animals.herbivore.Duck;
+import nature.animals.herbivore.Herbivore;
+import nature.animals.predator.Predator;
+import nature.animals.predator.Wolf;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,21 +28,21 @@ public class Cell {
 
     Plant plant;
     List<Plant> plantList = new ArrayList<>();
-    List<Predators> buffaloList = new ArrayList<>();
-    List<Herbivores> caterpillarList = new ArrayList<>();
-    List<Herbivores> deerList = new ArrayList<>();
-    List<Herbivores> duckList = new ArrayList<>();
-    List<Herbivores> goatList = new ArrayList<>();
-    List<Herbivores> hogList = new ArrayList<>();
-    List<Herbivores> horseList = new ArrayList<>();
-    List<Herbivores> mouseList = new ArrayList<>();
-    List<Herbivores> rabbitList = new ArrayList<>();
-    List<Herbivores> sheepList = new ArrayList<>();
-    List<Predators> bearList = new ArrayList<>();
-    List<Predators> boaList = new ArrayList<>();
-    List<Predators> eagleList = new ArrayList<>();
-    List<Predators> foxList = new ArrayList<>();
-    List<Predators> wolfList = new ArrayList<>();
+    List<Predator> buffaloList = new ArrayList<>();
+    List<Herbivore> caterpillarList = new ArrayList<>();
+    List<Herbivore> deerList = new ArrayList<>();
+    List<Herbivore> duckList = new ArrayList<>();
+    List<Herbivore> goatList = new ArrayList<>();
+    List<Herbivore> hogList = new ArrayList<>();
+    List<Herbivore> horseList = new ArrayList<>();
+    List<Herbivore> mouseList = new ArrayList<>();
+    List<Herbivore> rabbitList = new ArrayList<>();
+    List<Herbivore> sheepList = new ArrayList<>();
+    List<Predator> bearList = new ArrayList<>();
+    List<Predator> boaList = new ArrayList<>();
+    List<Predator> eagleList = new ArrayList<>();
+    List<Predator> foxList = new ArrayList<>();
+    List<Predator> wolfList = new ArrayList<>();
 
 
     public void createPlant() {
@@ -52,7 +52,7 @@ public class Cell {
 
     public void createPredator(int number) {
         for(int i = 0; i < number; i++){
-            Predators predator = new Wolf();
+            Predator predator = new Wolf();
             if(wolfList.size() < MAX_WOLF){
                 wolfList.add(predator);
             }
@@ -61,7 +61,7 @@ public class Cell {
 
     public void createHerbivores(int number) {
         for(int i = 0; i < number; i++){
-            Herbivores herbivore = new Duck();
+            Herbivore herbivore = new Duck();
             if(duckList.size() < MAX_DUCK){
                 duckList.add(herbivore);
             }

@@ -1,11 +1,8 @@
-package nature.animals.predators;
+package nature.animals.predator;
 
-import nature.animals.Animals;
-import nature.animals.herbivores.*;
+import nature.animals.herbivore.*;
 
-import java.util.Map;
-
-public class Wolf extends Predators {
+public class Wolf extends Predator {
 
    public Wolf (){
         initChanceToEat();

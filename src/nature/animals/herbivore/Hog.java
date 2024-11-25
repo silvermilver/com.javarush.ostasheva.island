@@ -1,6 +1,6 @@
-package nature.animals.herbivores;
+package nature.animals.herbivore;
 
-public class Hog extends Herbivores {
+public class Hog extends Herbivore {
 
     public Hog(){
         chanceToEat.put(new Mouse(), 50);

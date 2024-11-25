@@ -1,13 +1,11 @@
-package nature.animals.predators;
+package nature.animals.predator;
 
-import nature.animals.Animals;
-import nature.animals.herbivores.Caterpillar;
-import nature.animals.herbivores.Duck;
-import nature.animals.herbivores.Mouse;
-import nature.animals.herbivores.Rabbit;
+import nature.animals.herbivore.Duck;
+import nature.animals.herbivore.Mouse;
+import nature.animals.herbivore.Rabbit;
 
 
-public class Boa extends Predators {
+public class Boa extends Predator {
 
     public Boa () {
         initChanceToEat();

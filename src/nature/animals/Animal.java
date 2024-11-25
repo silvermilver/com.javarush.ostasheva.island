@@ -1,6 +1,6 @@
 package nature.animals;
 
-abstract public class Animals extends Nature {
+abstract public class Animal extends Nature {
 
     private int maxSpeed;
     private double maxSatiety;

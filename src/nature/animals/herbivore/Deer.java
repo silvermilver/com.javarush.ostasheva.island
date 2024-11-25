@@ -1,6 +1,6 @@
-package nature.animals.herbivores;
+package nature.animals.herbivore;
 
-public class Deer extends Herbivores {
+public class Deer extends Herbivore {
 
     public Deer() {
         super.setWeight(300);

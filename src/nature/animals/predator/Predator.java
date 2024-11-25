@@ -1,20 +1,17 @@
-package nature.animals.herbivores;
+package nature.animals.predator;
 
-import nature.animals.Animals;
-import nature.animals.Nature;
-import nature.animals.Plant;
+import nature.animals.Animal;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class Herbivores extends Animals {
+public abstract class Predator extends Animal {
 
-    public Herbivores(){
+    protected Map<Animal, Integer> chanceToEat;
+
+    public Predator(){
         this.chanceToEat = new HashMap<>();
-        this.chanceToEat.put(new Plant(), 100);
     }
-
-    protected Map<Nature, Integer> chanceToEat;
 
     @Override
     public void worker() {
@@ -45,4 +42,7 @@ public abstract class Herbivores extends Animals {
     public void die() {
 
     }
+
+
+
 }

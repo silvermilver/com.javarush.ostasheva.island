@@ -1,14 +1,11 @@
-package nature.animals.predators;
+package nature.animals.predator;
 
-import nature.animals.Animals;
-import nature.animals.herbivores.Caterpillar;
-import nature.animals.herbivores.Duck;
-import nature.animals.herbivores.Mouse;
-import nature.animals.herbivores.Rabbit;
+import nature.animals.herbivore.Caterpillar;
+import nature.animals.herbivore.Duck;
+import nature.animals.herbivore.Mouse;
+import nature.animals.herbivore.Rabbit;
 
-import java.util.Map;
-
-public class Fox extends Predators {
+public class Fox extends Predator {
 
     public Fox (){
         initChanceToEat();

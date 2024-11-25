@@ -1,8 +1,8 @@
-package nature.animals.predators;
+package nature.animals.predator;
 
-import nature.animals.herbivores.*;
+import nature.animals.herbivore.*;
 
-public class Bear extends Predators {
+public class Bear extends Predator {
 
     public Bear() {
         initChanceToEat();
