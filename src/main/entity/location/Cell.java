@@ -174,7 +174,6 @@ public class Cell implements Runnable {
         animals.forEach(e->e.reproduce(animals));
 //        animals.forEach(e->e.move(map));
         updateAnimals();
-
     }
 
     public Plant getPlant() {

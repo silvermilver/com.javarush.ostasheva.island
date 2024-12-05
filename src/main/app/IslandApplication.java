@@ -24,8 +24,8 @@ public class IslandApplication {
 
         System.out.println("Начинаем симуляцию...");
 
-//        ExecutorService mainPool = Executors.newFixedThreadPool(1);
-        for (int day = 1; day <= 1; day++) {
+//        ExecutorService mainPool = Executors.newFixedThreadPool(3);
+        for (int day = 1; day <= 5; day++) {
             for (int i = 0; i < island.getWidth(); i++) {
                 for (int j = 0; j < island.getHeight(); j++) {
                     Cell cell = island.getCells()[i][j];
@@ -35,7 +35,6 @@ public class IslandApplication {
             }
             island.printStatistic(day);
         }
-
 
     }
 }

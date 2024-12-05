@@ -1,20 +1,10 @@
 package main.entity.location;
 
-import main.entity.nature.Animal;
 import main.entity.nature.Nature;
 import main.entity.nature.Plant;
 import main.entity.nature.herbivore.*;
 import main.entity.nature.predator.*;
-import main.settings.HerbivoreType;
-import main.settings.PredatorType;
-
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 
 public class Island {
 
@@ -84,14 +74,6 @@ public class Island {
         totalCount.put(Eagle.class, 0);
         totalCount.put(Plant.class, 0);
         return totalCount;
-    }
-
-    public void printCells() {
-        for (int i = 0; i < cells.length; i++) {
-            for (int j = 0; j < cells[i].length; j++) {
-                System.out.println(cells[i][j]);
-            }
-        }
     }
 
     public Cell[][] getCells() {

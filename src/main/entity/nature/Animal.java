@@ -39,7 +39,6 @@ abstract public class Animal extends Nature {
 
     protected Map<Class<? extends Nature>, Integer> chanceToEat;
 
-
     abstract public void worker();
     abstract public void move();
     abstract public void chooseDirection();
@@ -92,12 +91,6 @@ abstract public class Animal extends Nature {
             child.setCell(cell);
             List<Animal> childList = cell.getChildList();
             childList.add(child);
-//            if(child instanceof Predator){
-//                childList.add(new Wolf());
-//                childList.add((Predator) child);
-//            }
-
-//            cell.setChildList(childList);
         }
     }
 
@@ -112,8 +105,6 @@ abstract public class Animal extends Nature {
     public void setMaxSatiety(double maxSatiety) {
         this.maxSatiety = maxSatiety;
     }
-
-
 
     public void setActualSatiety(double actualSatiety) {
         this.actualSatiety = actualSatiety;
@@ -132,5 +123,4 @@ abstract public class Animal extends Nature {
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
-
 }
