@@ -1,4 +1,4 @@
-package nature.herbivore;
+package main.entity.nature.herbivore;
 
 public class Sheep extends Herbivore {
 
