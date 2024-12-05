@@ -1,6 +1,19 @@
 package main.entity.location;
 
+import main.entity.nature.Animal;
+import main.entity.nature.Plant;
+import main.entity.nature.herbivore.*;
+import main.entity.nature.predator.*;
+import main.settings.HerbivoreType;
+import main.settings.PredatorType;
+
+import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 
 public class Island {
 
@@ -31,34 +44,46 @@ public class Island {
 
     public  void printStatistic(int day){
         System.out.print("День " + day + " итого:  ");
-        TreeMap<String, Integer> totalCount = new TreeMap<>();
+        ConcurrentHashMap<Class<? extends Animal>, Integer> totalCount = new ConcurrentHashMap<>();
 
-//        for (HerbivoreType herbivore : HerbivoreType.values()) {
-//            totalCount.put(herbivore.getPicture(), 0);
-//        }
-//        for (PredatorType predator : PredatorType.values()) {
-//            totalCount.put(predator.getPicture(), 0);
-//        }
-//        totalCount.put(Plant.getPicture(), 0);
+        totalCount.put(Buffalo.class, 0);
+        totalCount.put(Horse.class, 0);
+        totalCount.put(Deer.class, 0);
+        totalCount.put(Hog.class, 0);
+        totalCount.put(Sheep.class, 0);
+        totalCount.put(Goat.class, 0);
+        totalCount.put(Rabbit.class, 0);
+        totalCount.put(Duck.class, 0);
+        totalCount.put(Mouse.class, 0);
+        totalCount.put(Caterpillar.class, 0);
+        totalCount.put(Fox.class, 0);
+        totalCount.put(Bear.class, 0);
+        totalCount.put(Boa.class, 0);
+        totalCount.put(Wolf.class, 0);
+        totalCount.put(Eagle.class, 0);
 
         for (int i = 0; i < island.cells.length; i++) {
             for (int j = 0; j < island.cells[i].length; j++) {
                 Cell cell = island.cells[i][j];
-                cell.toString();
-//                cell.getHerbivores().forEach((type, list) ->
-//                        totalCount.put(type.getPicture(), totalCount.get(type.getPicture()) + list.size())
-//                );
+                cell.getHerbivores().forEach((clazz, list) ->
+                        totalCount.put(clazz, totalCount.get(clazz) + list.size())
+                );
+
+                cell.getPredators().forEach((clazz, list) ->
+                        totalCount.put(clazz, totalCount.get(clazz) + list.size())
+                );
+                totalCount.keySet();
 //
 //                cell.getPredators().forEach((type, list) ->
-//                        totalCount.put(type.getPicture(), totalCount.get(type.getPicture()) + list.size())
+//                        totalCount.put(getPictureByClass(clazz), totalCount.get(getPictureByClass(clazz)) + list.size())
 //                );
-//
+
 //                totalCount.put(Plant.getPicture(), totalCount.get(Plant.getPicture()) + cell.getPlants().size());
             }
         }
 
-//        totalCount.forEach((picture, count) -> System.out.print(picture + "=" + count + " "));
-//        System.out.println();
+        totalCount.forEach((picture, count) -> System.out.print(picture + "=" + count + " "));
+        System.out.println();
 
     }
 

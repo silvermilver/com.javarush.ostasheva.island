@@ -1,5 +1,6 @@
 package main.entity.nature.predator;
 
+import main.entity.location.Cell;
 import main.entity.nature.herbivore.*;
 
 public class Bear extends Predator {
@@ -12,15 +13,15 @@ public class Bear extends Predator {
     }
 
     private void initChanceToEat(){
-//        chanceToEat.put(new Boa(), 80);
-//        chanceToEat.put(new Horse(), 40);
-//        chanceToEat.put(new Deer(), 80);
-//        chanceToEat.put(new Rabbit(), 80);
-//        chanceToEat.put(new Mouse(), 90);
-//        chanceToEat.put(new Sheep(), 70);
-//        chanceToEat.put(new Goat(), 70);
-//        chanceToEat.put(new Hog(), 50);
-//        chanceToEat.put(new Buffalo(), 20);
-//        chanceToEat.put(new Duck(), 10);
+        chanceToEat.put(Boa.class, 80);
+        chanceToEat.put(Horse.class, 40);
+        chanceToEat.put(Deer.class, 80);
+        chanceToEat.put(Rabbit.class, 80);
+        chanceToEat.put(Mouse.class, 90);
+        chanceToEat.put(Sheep.class, 70);
+        chanceToEat.put(Goat.class, 70);
+        chanceToEat.put(Hog.class, 50);
+        chanceToEat.put(Buffalo.class, 20);
+        chanceToEat.put(Duck.class, 10);
     }
 }

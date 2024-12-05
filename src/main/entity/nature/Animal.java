@@ -1,5 +1,10 @@
 package main.entity.nature;
 
+import main.entity.location.Cell;
+import main.entity.nature.predator.Predator;
+import main.entity.nature.predator.Wolf;
+import main.fabrik.CloneEntityFactory;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -8,12 +13,21 @@ import static main.util.Rnd.random;
 
 abstract public class Animal extends Nature {
 
+    public Cell cell;
     private int maxSpeed;
     private double maxSatiety;
     private double actualSatiety;
     public boolean isDied = false;
 
     private double weight;
+
+    public Cell getCell() {
+        return cell;
+    }
+
+    public void setCell(Cell cell) {
+        this.cell = cell;
+    }
 
     public void setWeight(double newWeight) {
         weight = newWeight;
@@ -70,7 +84,20 @@ abstract public class Animal extends Nature {
 
     public void reproduce(List<Animal> cellAnimals){
         if(cellAnimals.stream().anyMatch(a -> a.getClass().equals(this.getClass()))){
-            //fabrik
+            Animal child = CloneEntityFactory.createAnimalByClass(this.getClass());
+            Cell cell = this.getCell();
+            if(child == null){
+                child.setCell(cell);
+            }
+            child.setCell(cell);
+            List<Animal> childList = cell.getChildList();
+            childList.add(child);
+//            if(child instanceof Predator){
+//                childList.add(new Wolf());
+//                childList.add((Predator) child);
+//            }
+
+//            cell.setChildList(childList);
         }
     }
 

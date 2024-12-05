@@ -8,6 +8,8 @@ import main.entity.nature.predator.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static main.util.Rnd.random;
 
@@ -23,9 +25,44 @@ public class Cell implements Runnable {
     }
 
     private List<Animal> animalList = new ArrayList<>();
-    private ConcurrentHashMap<Class<? extends Predator>, List<Predator>> predators = new ConcurrentHashMap<>();
-    private ConcurrentHashMap<Class<? extends Herbivore>, List<Herbivore>> herbivores = new ConcurrentHashMap<>();
 
+
+    private List<Animal> childList = new ArrayList<>();
+    private ConcurrentHashMap<Class<? extends Predator>, List<Predator>> predators = initPredatorsMap();
+    private ConcurrentHashMap<Class<? extends Herbivore>, List<Herbivore>> herbivores = initHerbivoresMap();
+
+    public ConcurrentHashMap<Class<? extends Predator>, List<Predator>> getPredators() {
+        return predators;
+    }
+
+    public ConcurrentHashMap<Class<? extends Herbivore>, List<Herbivore>> getHerbivores() {
+        return herbivores;
+    }
+
+    private ConcurrentHashMap<Class<? extends Predator>, List<Predator>> initPredatorsMap() {
+        this.predators = new ConcurrentHashMap<>();
+        predators.put(Bear.class, new ArrayList<Predator>());
+        predators.put(Wolf.class, new ArrayList<Predator>());
+        predators.put(Boa.class, new ArrayList<Predator>());
+        predators.put(Fox.class, new ArrayList<Predator>());
+        predators.put(Eagle.class, new ArrayList<Predator>());
+        return predators;
+    }
+
+    private ConcurrentHashMap<Class<? extends Herbivore>, List<Herbivore>> initHerbivoresMap() {
+        this.herbivores = new ConcurrentHashMap<>();
+        herbivores.put(Buffalo.class, new ArrayList<Herbivore>());
+        herbivores.put(Horse.class, new ArrayList<Herbivore>());
+        herbivores.put(Deer.class, new ArrayList<Herbivore>());
+        herbivores.put(Hog.class, new ArrayList<Herbivore>());
+        herbivores.put(Sheep.class, new ArrayList<Herbivore>());
+        herbivores.put(Goat.class, new ArrayList<Herbivore>());
+        herbivores.put(Rabbit.class, new ArrayList<Herbivore>());
+        herbivores.put(Duck.class, new ArrayList<Herbivore>());
+        herbivores.put(Mouse.class, new ArrayList<Herbivore>());
+        herbivores.put(Caterpillar.class, new ArrayList<Herbivore>());
+        return herbivores;
+    }
 
     public void initializeNature(){
         createPredator(5);
@@ -39,6 +76,14 @@ public class Cell implements Runnable {
         plant.weight = 100;
     }
 
+    public List<Animal> getChildList() {
+        return childList;
+    }
+
+    public void setChildList(List<Animal> childList) {
+        this.childList = childList;
+    }
+
     public void createPredator(int number) {
         for(int i = 0; i < number; i++){
             int rnd = random(1, 5);
@@ -50,6 +95,7 @@ public class Cell implements Runnable {
                 case 5 -> new Eagle();
                 default -> throw new IllegalStateException("Unexpected predator number: " + rnd);
             };
+                predator.setCell(this);
                 List<Predator> predatorList = predators.get(predator.getClass());
                 if(predatorList == null){
                     predatorList = new ArrayList<>();
@@ -75,6 +121,7 @@ public class Cell implements Runnable {
                 case 10 -> new Caterpillar();
                 default -> throw new IllegalStateException("Unexpected herbivore number: " + rnd);
             };
+                herbivore.setCell(this);
                 List<Herbivore> herbivoreList = herbivores.get(herbivore.getClass());
                 if(herbivoreList == null){
                     herbivoreList = new ArrayList<>();
@@ -140,6 +187,9 @@ public class Cell implements Runnable {
 
     private void updateAnimals(){
         this.animalList = getAllAnimals().stream().filter(a -> !a.isDied).toList();
+        this.animalList = Stream.concat(
+                getAllAnimals().stream(), getChildList().stream()).parallel()
+                .collect(Collectors.toList());
     }
 
     private List<Animal> setAnimalList(){
