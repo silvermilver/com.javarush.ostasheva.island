@@ -16,7 +16,11 @@ import static main.util.Rnd.random;
 public class Cell implements Runnable {
 
     private int x, y;
-
+    public Plant plant;
+    private List<Animal> animalList = new ArrayList<>();
+    private List<Animal> childList = new ArrayList<>();
+    private ConcurrentHashMap<Class<? extends Predator>, List<Predator>> predators = initPredatorsMap();
+    private ConcurrentHashMap<Class<? extends Herbivore>, List<Herbivore>> herbivores = initHerbivoresMap();
 
     public Cell(int x, int y) {
         this.x = x;
@@ -24,19 +28,22 @@ public class Cell implements Runnable {
         initializeNature();
     }
 
-    private List<Animal> animalList = new ArrayList<>();
-
-
-    private List<Animal> childList = new ArrayList<>();
-    private ConcurrentHashMap<Class<? extends Predator>, List<Predator>> predators = initPredatorsMap();
-    private ConcurrentHashMap<Class<? extends Herbivore>, List<Herbivore>> herbivores = initHerbivoresMap();
-
-    public ConcurrentHashMap<Class<? extends Predator>, List<Predator>> getPredators() {
-        return predators;
+    public void initializeNature(){
+        createPredator(5);
+        createHerbivore(10);
+        createPlant();
+        setAnimalList();
     }
 
-    public ConcurrentHashMap<Class<? extends Herbivore>, List<Herbivore>> getHerbivores() {
-        return herbivores;
+    @Override
+    public void run() {
+        List<Animal> animals = getAllAnimals();
+        plant.reproduce();
+        animals.forEach(Animal::reduceActualSatiety);
+        animals.forEach(e -> e.eat(animals, plant));
+        animals.forEach(e->e.reproduce(animals));
+//        animals.forEach(e->e.move(map));
+        updateAnimals();
     }
 
     private ConcurrentHashMap<Class<? extends Predator>, List<Predator>> initPredatorsMap() {
@@ -64,24 +71,21 @@ public class Cell implements Runnable {
         return herbivores;
     }
 
-    public void initializeNature(){
-        createPredator(5);
-        createHerbivore(10);
-        createPlant();
-        setAnimalList();
-    }
-
     public void createPlant() {
         plant = new Plant();
         plant.weight = 100;
     }
 
-    public List<Animal> getChildList() {
-        return childList;
+    public ConcurrentHashMap<Class<? extends Predator>, List<Predator>> getPredators() {
+        return predators;
     }
 
-    public void setChildList(List<Animal> childList) {
-        this.childList = childList;
+    public ConcurrentHashMap<Class<? extends Herbivore>, List<Herbivore>> getHerbivores() {
+        return herbivores;
+    }
+
+    public List<Animal> getChildList() {
+        return childList;
     }
 
     public void createPredator(int number) {
@@ -148,34 +152,6 @@ public class Cell implements Runnable {
     public static int MAX_FOX = 30;
     public static int MAX_WOLF = 30;
 
-    Plant plant;
-    List<Herbivore> caterpillarList = new ArrayList<>();
-    List<Herbivore> deerList = new ArrayList<>();
-    List<Herbivore> duckList = new ArrayList<>();
-    List<Herbivore> goatList = new ArrayList<>();
-    List<Herbivore> hogList = new ArrayList<>();
-    List<Herbivore> horseList = new ArrayList<>();
-    List<Herbivore> mouseList = new ArrayList<>();
-    List<Herbivore> rabbitList = new ArrayList<>();
-    List<Herbivore> sheepList = new ArrayList<>();
-    List<Predator> buffaloList = new ArrayList<>();
-    List<Predator> bearList = new ArrayList<>();
-    List<Predator> boaList = new ArrayList<>();
-    List<Predator> eagleList = new ArrayList<>();
-    List<Predator> foxList = new ArrayList<>();
-    List<Predator> wolfList = new ArrayList<>();
-
-    @Override
-    public void run() {
-        List<Animal> animals = getAllAnimals();
-        plant.reproduce();
-        animals.forEach(Animal::reduceActualSatiety);
-        animals.forEach(e -> e.eat(animals, plant));
-        animals.forEach(e->e.reproduce(animals));
-//        animals.forEach(e->e.move(map));
-        updateAnimals();
-    }
-
     public Plant getPlant() {
         return this.plant;
     }
@@ -196,5 +172,4 @@ public class Cell implements Runnable {
         herbivores.values().stream().forEach(l -> animalList.addAll(l));
         return animalList;
     }
-
 }
