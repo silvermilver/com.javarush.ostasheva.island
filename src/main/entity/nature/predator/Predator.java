@@ -17,11 +17,6 @@ public abstract class Predator extends Animal {
     }
 
     @Override
-    public void move() {
-
-    }
-
-    @Override
     public void chooseDirection() {
 
     }
@@ -30,5 +25,4 @@ public abstract class Predator extends Animal {
     public void reproduce() {
 
     }
-
 }

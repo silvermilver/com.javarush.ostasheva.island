@@ -40,9 +40,9 @@ public class Cell implements Runnable {
         List<Animal> animals = getAllAnimals();
         plant.reproduce();
         animals.forEach(Animal::reduceActualSatiety);
-        animals.forEach(e -> e.eat(animals, plant));
-        animals.forEach(e->e.reproduce(animals));
-//        animals.forEach(e->e.move(map));
+        animals.forEach(a -> a.eat(animals, plant));
+        animals.forEach(a -> a.reproduce(animals));
+        animals.forEach(a -> a.move());
         updateAnimals();
     }
 

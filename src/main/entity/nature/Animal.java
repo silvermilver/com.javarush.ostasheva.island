@@ -1,8 +1,6 @@
 package main.entity.nature;
 
 import main.entity.location.Cell;
-import main.entity.nature.predator.Predator;
-import main.entity.nature.predator.Wolf;
 import main.fabrik.CloneEntityFactory;
 
 import java.util.List;
@@ -14,41 +12,20 @@ import static main.util.Rnd.random;
 abstract public class Animal extends Nature {
 
     public Cell cell;
+    public boolean isDied = false;
     private int maxSpeed;
     private double maxSatiety;
     private double actualSatiety;
-    public boolean isDied = false;
-
     private double weight;
-
-    public Cell getCell() {
-        return cell;
-    }
-
-    public void setCell(Cell cell) {
-        this.cell = cell;
-    }
-
-    public void setWeight(double newWeight) {
-        weight = newWeight;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
     protected Map<Class<? extends Nature>, Integer> chanceToEat;
 
     abstract public void worker();
-    abstract public void move();
     abstract public void chooseDirection();
 
-    public void die() {
-        this.isDied = true;
-    }
 
-    public int getMaxSpeed() {
-        return maxSpeed;
+    public void move(){
+        int move = random(0, this.getMaxSpeed());
+
     }
 
     public void eat(List<Animal> cellAnimals, Plant plant){
@@ -94,6 +71,14 @@ abstract public class Animal extends Nature {
         }
     }
 
+    public void die() {
+        this.isDied = true;
+    }
+
+    public int getMaxSpeed() {
+        return maxSpeed;
+    }
+
     public void setMaxSpeed(int maxSpeed) {
         this.maxSpeed = maxSpeed;
     }
@@ -117,6 +102,22 @@ abstract public class Animal extends Nature {
 
     public void reduceActualSatiety(){
         setActualSatiety(this.actualSatiety - maxSatiety/6);
+    }
+
+    public Cell getCell() {
+        return cell;
+    }
+
+    public void setCell(Cell cell) {
+        this.cell = cell;
+    }
+
+    public void setWeight(double newWeight) {
+        weight = newWeight;
+    }
+
+    public double getWeight() {
+        return weight;
     }
 
     @Override
