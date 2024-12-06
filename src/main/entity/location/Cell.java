@@ -153,10 +153,26 @@ public class Cell {
     public void updateAnimals(){
         this.animalList = getAllAnimals().stream()
                 .filter(a -> !a.isDied)
+                .filter(a -> (a.getCell().getX() == this.getX()) && (a.getCell().getY() == this.getY()))
                 .filter(a -> a.getWeight() > 0).toList();
         this.animalList = Stream.concat(
                 getAllAnimals().stream(), getChildList().stream()).parallel()
                 .collect(Collectors.toList());
+        predators = initPredatorsMap();
+        herbivores = initHerbivoresMap();
+        for(Animal animal : animalList){
+            if(animal instanceof Predator){
+                Predator predator = (Predator) animal;
+                List<Predator> predatorList = predators.get(predator.getClass());
+                predatorList.add(predator);
+                predators.put(predator.getClass(), predatorList);
+            } else if (animal instanceof Herbivore) {
+                Herbivore herbivore = (Herbivore) animal;
+                List<Herbivore> herbivoreList = herbivores.get(herbivore.getClass());
+                herbivoreList.add(herbivore);
+                herbivores.put(herbivore.getClass(), herbivoreList);
+            }
+        }
     }
 
     private List<Animal> setAnimalList(){
