@@ -24,6 +24,6 @@ public class Plant extends Nature {
     }
 
     public void reproduce() {
-        addWeight(100);
+        addWeight(30);
     }
 }

@@ -1,6 +1,7 @@
 package main.entity.nature;
 
 import main.entity.location.Cell;
+import main.entity.location.Island;
 import main.fabrik.CloneEntityFactory;
 
 import java.util.List;
@@ -19,14 +20,9 @@ abstract public class Animal extends Nature {
     private double weight;
     protected Map<Class<? extends Nature>, Integer> chanceToEat;
 
-    abstract public void worker();
-    abstract public void chooseDirection();
-
-
-    public void move(){
+    public void move(Cell cell, Island island){
         int move = random(0, this.getMaxSpeed());
         while(move > 0){
-            Cell currentCell = this.getCell();
 //            int rndDirection = random(1, 4); // 1 -> forward, 2 -> up, 3 -> back, 4 - down
 //            int newX =
 //            int newY =

@@ -9,15 +9,4 @@ public abstract class Predator extends Animal {
     public Predator() {
         this.chanceToEat = new HashMap<>();
     }
-
-    @Override
-    public void worker() {
-
-    }
-
-    @Override
-    public void chooseDirection() {
-
-    }
-
 }
