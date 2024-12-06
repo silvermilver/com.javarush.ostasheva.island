@@ -53,7 +53,7 @@ public class IslandApplication {
         for (Animal animal : cell.getAllAnimals()) {
             animal.reduceActualSatiety();
             animal.eat(cell);
-            animal.reproduce();
+            animal.reproduce(cell);
 //            animal.move(cell, island);
         }
         cell.updateAnimals();

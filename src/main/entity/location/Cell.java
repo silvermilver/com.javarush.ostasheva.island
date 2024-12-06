@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 
 import static main.util.Rnd.random;
 
-public class Cell implements Runnable {
+public class Cell {
 
     private int x, y;
     public Island island;
@@ -34,17 +34,6 @@ public class Cell implements Runnable {
         createHerbivore(10);
         createPlant();
         setAnimalList();
-    }
-
-    @Override
-    public void run() {
-        List<Animal> animals = getAllAnimals();
-        plant.reproduce();
-        animals.forEach(Animal::reduceActualSatiety);
-//        animals.forEach(a -> a.eat(animals, plant));
-        animals.forEach(a -> a.reproduce(animals));
-        animals.forEach(a -> a.move());
-        updateAnimals();
     }
 
     private ConcurrentHashMap<Class<? extends Predator>, List<Predator>> initPredatorsMap() {

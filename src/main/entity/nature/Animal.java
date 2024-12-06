@@ -68,13 +68,12 @@ abstract public class Animal extends Nature {
         }
     }
 
-    public void reproduce(List<Animal> cellAnimals){
-        if(cellAnimals.stream().anyMatch(a -> a.getClass().equals(this.getClass()))){
+    public void reproduce(Cell cell){
+
+        if(cell.getAllAnimals().stream()
+                .filter(a -> !a.isDied && !a.equals(this))
+                .anyMatch(a -> a.getClass().equals(this.getClass()))){
             Animal child = CloneEntityFactory.createAnimalByClass(this.getClass());
-            Cell cell = this.getCell();
-            if(child == null){
-                child.setCell(cell);
-            }
             child.setCell(cell);
             List<Animal> childList = cell.getChildList();
             childList.add(child);

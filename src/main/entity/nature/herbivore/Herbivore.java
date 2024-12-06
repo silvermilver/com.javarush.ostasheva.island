@@ -28,11 +28,6 @@ public abstract class Herbivore extends Animal {
     }
 
     @Override
-    public void reproduce() {
-
-    }
-
-    @Override
     public void die() {
 
     }

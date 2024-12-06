@@ -12,5 +12,4 @@ public abstract class Nature {
 //        return weight;
 //    }
 
-    abstract public void reproduce();
 }

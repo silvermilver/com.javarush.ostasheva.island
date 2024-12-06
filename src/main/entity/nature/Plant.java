@@ -23,7 +23,6 @@ public class Plant extends Nature {
         return picture;
     }
 
-    @Override
     public void reproduce() {
         addWeight(100);
     }
