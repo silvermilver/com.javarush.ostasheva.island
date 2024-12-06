@@ -49,8 +49,23 @@ public class Island {
                 plantWeight = plantWeight + cell.getPlant().getWeight();
             }
         }
+        System.out.print("\uD83D\uDC3B= " + totalCount.get(Bear.class) + " ");
+        System.out.print("\uD83D\uDC0D= " + totalCount.get(Boa.class) + " ");
+        System.out.print("\uD83E\uDD85= " + totalCount.get(Eagle.class) + " ");
+        System.out.print("\uD83E\uDD8A= " + totalCount.get(Fox.class) + " ");
+        System.out.print("\uD83D\uDC3A= " + totalCount.get(Wolf.class) + " ");
+        System.out.print("\uD83D\uDC03= " + totalCount.get(Buffalo.class) + " ");
+        System.out.print("\uD83D\uDC1B= " + totalCount.get(Caterpillar.class) + " ");
+        System.out.print("\uD83E\uDD8C= " + totalCount.get(Deer.class) + " ");
+        System.out.print("\uD83E\uDD86= " + totalCount.get(Duck.class) + " ");
+        System.out.print("\uD83D\uDC10= " + totalCount.get(Goat.class) + " ");
+        System.out.print("\uD83D\uDC17= " + totalCount.get(Hog.class) + " ");
+        System.out.print("\uD83D\uDC0E= " + totalCount.get(Horse.class) + " ");
+        System.out.print("\uD83D\uDC01= " + totalCount.get(Mouse.class) + " ");
+        System.out.print("\uD83D\uDC07= " + totalCount.get(Rabbit.class) + " ");
+        System.out.print("\uD83D\uDC11= " + totalCount.get(Sheep.class) + " ");
+        System.out.print("\uD83C\uDF31= " + plantWeight + " ");
         totalCount.forEach((clazz, count) -> System.out.print(clazz + "=" + count + " "));
-        System.out.print(Plant.class + "=" + plantWeight + " ");
         System.out.println();
 
     }

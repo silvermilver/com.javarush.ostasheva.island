@@ -197,25 +197,4 @@ public class Cell implements Runnable {
         return animalList;
     }
 
-    @Override
-    public String toString() {
-        return "main.service.entity.nature.Cell{" +
-                " \uD83C\uDF31 plant=" + plant.weight +
-                ", \uD83D\uDC03 buffaloList=" + buffaloList.size() +
-                ", \uD83D\uDC1BcaterpillarList=" + caterpillarList.size() +
-                ", \uD83E\uDD8C deerList=" + deerList.size() +
-                ", \uD83E\uDD86 duckList=" + duckList.size() +
-                ", \uD83D\uDC10 goatList=" + goatList.size() +
-                ", \uD83D\uDC17 hogList=" + hogList.size() +
-                ", \uD83D\uDC0E horseList=" + horseList.size() +
-                ", \uD83D\uDC01 mouseList=" + mouseList.size() +
-                ", \uD83D\uDC07 rabbitList=" + rabbitList.size() +
-                ", \uD83D\uDC11 sheepList=" + sheepList.size() +
-                ", \uD83D\uDC3B bearList=" + bearList.size() +
-                ", \uD83D\uDC0D boaList=" + boaList.size() +
-                ", \uD83E\uDD85 eagleList=" + eagleList.size() +
-                ", \uD83E\uDD8A foxList=" + foxList.size() +
-                ", \uD83D\uDC3A wolfList=" + wolfList.size() +
-                '}';
-    }
 }
