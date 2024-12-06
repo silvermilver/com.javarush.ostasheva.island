@@ -8,15 +8,16 @@ public class Eagle extends Predator {
 
     public Eagle(){
         initChanceToEat();
-        super.setWeight(6);
-        super.setMaxSpeed(3);
-        super.setMaxSatiety(1);
+        setWeight(6);
+        setMaxSpeed(3);
+        setMaxSatiety(1);
+        setActualSatiety(getMaxSatiety()/2);
     }
 
     private void initChanceToEat(){
-//        chanceToEat.put(new Fox(), 10);
-//        chanceToEat.put(new Rabbit(), 90);
-//        chanceToEat.put(new Mouse(), 90);
-//        chanceToEat.put(new Duck(), 80);
+        chanceToEat.put(Fox.class, 10);
+        chanceToEat.put(Rabbit.class, 90);
+        chanceToEat.put(Mouse.class, 90);
+        chanceToEat.put(Duck.class, 80);
     }
 }

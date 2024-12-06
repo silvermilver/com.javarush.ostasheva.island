@@ -1,15 +1,15 @@
 package main.entity.nature.predator;
 
-import main.entity.location.Cell;
 import main.entity.nature.herbivore.*;
 
 public class Bear extends Predator {
 
     public Bear() {
         initChanceToEat();
-        super.setWeight(500);
-        super.setMaxSpeed(2);
-        super.setMaxSatiety(80);
+        setWeight(500);
+        setMaxSpeed(2);
+        setMaxSatiety(80);
+        setActualSatiety(getMaxSatiety()/2);
     }
 
     private void initChanceToEat(){

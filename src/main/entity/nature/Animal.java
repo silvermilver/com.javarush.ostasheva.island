@@ -25,12 +25,22 @@ abstract public class Animal extends Nature {
 
     public void move(){
         int move = random(0, this.getMaxSpeed());
+        while(move > 0){
+            Cell currentCell = this.getCell();
+//            int rndDirection = random(1, 4); // 1 -> forward, 2 -> up, 3 -> back, 4 - down
+//            int newX =
+//            int newY =
+//            if()
 
+
+            move--;
+        }
     }
 
-    public void eat(List<Animal> cellAnimals, Plant plant){
+    public void eat(Cell cell){
         Set<Class<? extends Nature>> canToEatSet = chanceToEat.keySet();
-        List<Animal> canToEatList = cellAnimals
+        Plant plant = cell.getPlant();
+        List<Animal> canToEatList = cell.getAllAnimals()
                 .stream()
                 .filter(a -> !a.isDied)
                 .filter(a -> canToEatSet.contains(a.getClass()))

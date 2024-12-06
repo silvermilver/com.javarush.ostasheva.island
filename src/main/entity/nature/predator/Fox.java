@@ -9,15 +9,16 @@ public class Fox extends Predator {
 
     public Fox (){
         initChanceToEat();
-        super.setWeight(8);
-        super.setMaxSpeed(2);
-        super.setMaxSatiety(2);
+        setWeight(8);
+        setMaxSpeed(2);
+        setMaxSatiety(2);
+        setActualSatiety(getMaxSatiety()/2);
     }
 
     private void initChanceToEat(){
-//        chanceToEat.put(new Rabbit(), 70);
-//        chanceToEat.put(new Mouse(), 90);
-//        chanceToEat.put(new Duck(), 60);
-//        chanceToEat.put(new Caterpillar(), 40);
+        chanceToEat.put(Rabbit.class, 70);
+        chanceToEat.put(Mouse.class, 90);
+        chanceToEat.put(Duck.class, 60);
+        chanceToEat.put(Caterpillar.class, 40);
     }
 }

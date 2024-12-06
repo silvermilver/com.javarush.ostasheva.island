@@ -5,9 +5,9 @@ public class Mouse extends Herbivore {
 
     public Mouse(){
         chanceToEat.put(Caterpillar.class, 90);
-        super.setWeight(0.05);
-        super.setMaxSpeed(1);
+        setWeight(0.05);
+        setMaxSpeed(1);
+        setMaxSatiety(0.01);
+        setActualSatiety(getMaxSatiety()/2);
     }
-
-
 }

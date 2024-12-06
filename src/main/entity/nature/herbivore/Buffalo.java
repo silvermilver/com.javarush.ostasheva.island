@@ -3,7 +3,9 @@ package main.entity.nature.herbivore;
 public class Buffalo extends Herbivore {
 
     public Buffalo() {
-        super.setWeight(700);
-        super.setMaxSpeed(3);
+        setWeight(700);
+        setMaxSpeed(3);
+        setMaxSatiety(50);
+        setActualSatiety(getMaxSatiety()/2);
     }
 }

@@ -3,7 +3,9 @@ package main.entity.nature.herbivore;
 public class Deer extends Herbivore {
 
     public Deer() {
-        super.setWeight(300);
-        super.setMaxSpeed(4);
+        setWeight(300);
+        setMaxSpeed(4);
+        setMaxSatiety(50);
+        setActualSatiety(getMaxSatiety()/2);
     }
 }

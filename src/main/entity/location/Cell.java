@@ -16,6 +16,7 @@ import static main.util.Rnd.random;
 public class Cell implements Runnable {
 
     private int x, y;
+    public Island island;
     public Plant plant;
     private List<Animal> animalList = new ArrayList<>();
     private List<Animal> childList = new ArrayList<>();
@@ -40,7 +41,7 @@ public class Cell implements Runnable {
         List<Animal> animals = getAllAnimals();
         plant.reproduce();
         animals.forEach(Animal::reduceActualSatiety);
-        animals.forEach(a -> a.eat(animals, plant));
+//        animals.forEach(a -> a.eat(animals, plant));
         animals.forEach(a -> a.reproduce(animals));
         animals.forEach(a -> a.move());
         updateAnimals();
@@ -90,13 +91,13 @@ public class Cell implements Runnable {
 
     public void createPredator(int number) {
         for(int i = 0; i < number; i++){
-            int rnd = random(1, 5);
+            int rnd = random(1, 6);
             Predator predator = switch (rnd) {
                 case 1 -> new Bear();
                 case 2 -> new Wolf();
                 case 3 -> new Boa();
-                case 4 -> new Fox();
-                case 5 -> new Eagle();
+                case 4 -> new Eagle();
+                case 5 -> new Fox();
                 default -> throw new IllegalStateException("Unexpected predator number: " + rnd);
             };
                 predator.setCell(this);
@@ -111,7 +112,7 @@ public class Cell implements Runnable {
 
     public void createHerbivore(int number) {
         for(int i = 0; i < number; i++){
-            int rnd = random(1, 10);
+            int rnd = random(1, 11);
             Herbivore herbivore = switch (rnd) {
                 case 1 -> new Buffalo();
                 case 2 -> new Horse();
@@ -160,7 +161,7 @@ public class Cell implements Runnable {
         return this.animalList;
     }
 
-    private void updateAnimals(){
+    public void updateAnimals(){
         this.animalList = getAllAnimals().stream().filter(a -> !a.isDied).toList();
         this.animalList = Stream.concat(
                 getAllAnimals().stream(), getChildList().stream()).parallel()

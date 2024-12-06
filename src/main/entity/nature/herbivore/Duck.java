@@ -7,6 +7,6 @@ public class Duck extends Herbivore {
         setWeight(1);
         setMaxSpeed(4);
         setMaxSatiety(0.15);
-        setActualSatiety(0.15);
+        setActualSatiety(getMaxSatiety()/2);
     }
 }

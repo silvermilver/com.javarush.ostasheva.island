@@ -61,7 +61,6 @@ public class Island {
         System.out.print("\uD83D\uDC07= " + totalCount.get(Rabbit.class) + " ");
         System.out.print("\uD83D\uDC11= " + totalCount.get(Sheep.class) + " ");
         System.out.print("\uD83C\uDF31= " + totalPlantWeight + " ");
-        totalCount.forEach((clazz, count) -> System.out.print(clazz + "=" + count + " "));
         System.out.println();
 
     }

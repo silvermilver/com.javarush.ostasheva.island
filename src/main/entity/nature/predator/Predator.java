@@ -1,6 +1,5 @@
 package main.entity.nature.predator;
 
-import main.entity.location.Cell;
 import main.entity.nature.Animal;
 
 import java.util.HashMap;

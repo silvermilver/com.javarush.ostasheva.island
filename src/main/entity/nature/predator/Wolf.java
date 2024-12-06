@@ -9,7 +9,7 @@ public class Wolf extends Predator {
         setWeight(50);
         setMaxSpeed(3);
         setMaxSatiety(8);
-        setActualSatiety(8);
+        setActualSatiety(getMaxSatiety()/2);
     }
 
     private void initChanceToEat(){
