@@ -21,14 +21,25 @@ abstract public class Animal extends Nature {
     protected Map<Class<? extends Nature>, Integer> chanceToEat;
 
     public void move(Cell cell, Island island){
-        int move = random(0, this.getMaxSpeed());
+        int move = random(0, this.getMaxSpeed() + 1);
+        Cell[][] cells = island.getCells();
+        int currentX = cell.getX();
+        int currentY = cell.getY();
         while(move > 0){
-//            int rndDirection = random(1, 4); // 1 -> forward, 2 -> up, 3 -> back, 4 - down
-//            int newX =
-//            int newY =
-//            if()
-
-
+            int rndDirection = random(1, 4); // 1 -> forward, 2 -> up, 3 -> back, 4 - down
+            if(rndDirection == 1 && cells.length > (currentX + 1)){
+                currentX = currentX + 1;
+                this.getCell().setX(currentX);
+            } else if(rndDirection == 2 && cells[currentX].length > (currentY + 1)){
+                currentY = currentY + 1;
+                this.getCell().setY(currentY);
+            } else if(rndDirection == 3 && (currentX - 1) >= 0){
+                currentX = currentX - 1;
+                this.getCell().setX(currentX);
+            } else if(rndDirection == 4 && (currentY - 1) >= 0){
+                currentY = currentY - 1;
+                this.getCell().setY(currentY);
+            }
             move--;
         }
     }

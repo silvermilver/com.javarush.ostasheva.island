@@ -151,7 +151,9 @@ public class Cell {
     }
 
     public void updateAnimals(){
-        this.animalList = getAllAnimals().stream().filter(a -> !a.isDied).toList();
+        this.animalList = getAllAnimals().stream()
+                .filter(a -> !a.isDied)
+                .filter(a -> a.getWeight() > 0).toList();
         this.animalList = Stream.concat(
                 getAllAnimals().stream(), getChildList().stream()).parallel()
                 .collect(Collectors.toList());
@@ -161,5 +163,21 @@ public class Cell {
         predators.values().stream().forEach(l -> animalList.addAll(l));
         herbivores.values().stream().forEach(l -> animalList.addAll(l));
         return animalList;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 }
