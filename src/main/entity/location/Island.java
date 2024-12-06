@@ -36,17 +36,13 @@ public class Island {
     public  void printStatistic(int day){
         System.out.print("День " + day + " итого:  ");
         ConcurrentHashMap<Class<? extends Nature>, Integer> totalCount = initTotalAnimalMaps();
-        double plantWeight = 0;
+        double totalPlantWeight = 0;
         for (int i = 0; i < island.cells.length; i++) {
             for (int j = 0; j < island.cells[i].length; j++) {
                 Cell cell = island.cells[i][j];
-                cell.getHerbivores().forEach((clazz, list) ->
-                        totalCount.put(clazz, totalCount.get(clazz) + list.size())
-                );
-                cell.getPredators().forEach((clazz, list) ->
-                        totalCount.put(clazz, totalCount.get(clazz) + list.size())
-                );
-                plantWeight = plantWeight + cell.getPlant().getWeight();
+                cell.getAllAnimals().forEach((a ->
+                        totalCount.put(a.getClass(), totalCount.get(a.getClass()) + 1)));
+                totalPlantWeight = totalPlantWeight + cell.getPlant().getWeight();
             }
         }
         System.out.print("\uD83D\uDC3B= " + totalCount.get(Bear.class) + " ");
@@ -64,7 +60,7 @@ public class Island {
         System.out.print("\uD83D\uDC01= " + totalCount.get(Mouse.class) + " ");
         System.out.print("\uD83D\uDC07= " + totalCount.get(Rabbit.class) + " ");
         System.out.print("\uD83D\uDC11= " + totalCount.get(Sheep.class) + " ");
-        System.out.print("\uD83C\uDF31= " + plantWeight + " ");
+        System.out.print("\uD83C\uDF31= " + totalPlantWeight + " ");
         totalCount.forEach((clazz, count) -> System.out.print(clazz + "=" + count + " "));
         System.out.println();
 
